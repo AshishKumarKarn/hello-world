@@ -1,0 +1,22 @@
+<p>structural-directives works!</p>
+
+<div *ngIf="showOrHide; then thenBlock; else elseBlock"></div>
+<ng-template #thenBlock>
+    <h1>I am showing, but there is another <br/> block you can't even inspect to see <br/>that 
+        as it is in else block
+    </h1>
+</ng-template>
+<ng-template #elseBlock>
+    <h2>I am hidden</h2>
+
+</ng-template>
+
+<div *ngFor="let car of cars; index as i">
+    {{car}}
+</div>
+<div [style]="styl" [ngSwitch]="color">
+    <div *ngSwitchCase="'red'">You picked Red</div>
+    <div *ngSwitchCase="'green'">You picked Green</div>
+    <div *ngSwitchCase="'yellow'">You picked Yellow</div>
+</div>
+<div [ngClass]="myStyle">Hey I am Stylish</div>

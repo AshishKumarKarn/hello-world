@@ -1,0 +1,11 @@
+<p>parent works!</p>
+<!-- [parentPropertyData]="parentProperty" START This code depicts, how we can transfer parent component data into child component -->
+<!-- (childEvent)="message = $event" This code depicts, how we can transfer CHILD component data into PARENT component -->
+<app-child [parentPropertyData]="parentProperty" (myChildEvent)="message = $event"></app-child>
+<!-- END This code depicts, how we can transfer parent component data into child component -->
+
+<h2>{{message|titlecase}}</h2>
+<h2>{{amount|currency:'INR':'code'}}</h2>
+<h2>{{amount|currency:'INR'}}</h2>
+
+<button (click)="message=''">reset</button>

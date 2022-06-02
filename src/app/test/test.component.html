@@ -1,0 +1,15 @@
+<p>test works!</p>
+<p>{{getGreeting()}} {{name.toUpperCase()}}</p>
+<input id="myId" type="text" [value]="someValue" [disabled]="disabledByComponent"/>
+
+<h2 [ngClass]="messageClass">Hey There</h2>
+
+<h2 (click)="onClicking($event)">Another Text to capture event</h2>
+
+<input type="text" #someId (input)="logData($event,someId.value)"/>
+
+
+<canvas id="myCanvas"></canvas>
+<br>
+<button id="lp" (click)="loadPDF()">Load PDF</button>
+
