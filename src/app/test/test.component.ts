@@ -12,8 +12,8 @@ import { GetViewportParameters, PDFDocumentProxy, RenderParameters } from 'pdfjs
 export class TestComponent implements OnInit {
 
   private pdfworkersrcCDN:string;
-  constructor(private _empService:EmpserviceService) { 
-    //you might want to inject this url through some config service 
+  constructor(private _empService:EmpserviceService) {
+    //you might want to inject this url through some config service
     this.pdfworkersrcCDN = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.worker.min.js'
   }
 
@@ -22,9 +22,9 @@ export class TestComponent implements OnInit {
     {this.empDataResp = data
     },
     error=>this.errorMsg=error);
-    
+
     pdfJSLib.GlobalWorkerOptions.workerSrc = this.pdfworkersrcCDN;
-    
+
   }
   private empDataResp:any;
   private errorMsg:any;
@@ -36,19 +36,19 @@ export class TestComponent implements OnInit {
     currentPage: 1,
     zoom: 1.5
   }
-  
+
 
   getGreeting(){
     return 'Welcome';
   }
 
   loadPDF(){
-    let url = 'https://india.oup.com/productPage/5591038/7421214/9780198062271';
+    let url = 'https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/examples/learning/helloworld.pdf';
     this.loadPDFWithUrl(url);
   }
    loadPDFWithUrl(url:any){
      pdfJSLib.getDocument(url).promise.then(doc=>{
-      console.log("This file has "+doc._pdfInfo.numPages+" pages");     
+      console.log("This file has "+doc._pdfInfo.numPages+" pages");
      this.pdfState.pdf = doc;
     this.render();
     })
@@ -57,7 +57,7 @@ export class TestComponent implements OnInit {
   render=()=>{
     this.pdfState.pdf.getPage(this.pdfState.currentPage).then((page)=>{
       console.log('rendering..');
-      
+
       let myCanvas = <HTMLCanvasElement>document.getElementById("myCanvas");
       var ctx = myCanvas.getContext("2d");
       // { scale, rotation, offsetX, offsetY, dontFlip, }?: GetViewportParameters
@@ -66,10 +66,10 @@ export class TestComponent implements OnInit {
       myCanvas.width = viewPort.width;
       myCanvas.height = viewPort.height;
       let renderParams =<RenderParameters> { canvasContext: ctx,
-        viewport: viewPort}; 
+        viewport: viewPort};
       page.render(renderParams);
       console.log('rendered');
-      
+
 
     })
 
@@ -89,11 +89,11 @@ export class TestComponent implements OnInit {
     console.log(event);
   }
   logData(event:any,inputData:any){
-    
+
     console.log(event.target.value);
     console.log(inputData);
     console.log(this.errorMsg)
     console.log(this.empDataResp.data);
-    
+
   }
 }
